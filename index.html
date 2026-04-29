@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio Builder</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+</head>
+<body>
+    <div class="page-shell">
+        <main class="app-shell" id="appShell">
+            <header class="hero">
+                <div>
+                    <p class="eyebrow">Student Portfolio Builder</p>
+                    <h1>Build your profile from a document upload.</h1>
+                    <p class="lede">
+                        Upload a `.txt` or `.pdf` file with your details and the
+                        portfolio will populate itself.
+                    </p>
+                </div>
+                <div class="theme-picker" aria-label="Theme picker">
+                    <button type="button" class="theme-button active" data-theme="light">Light</button>
+                    <button type="button" class="theme-button" data-theme="dark">Dark</button>
+                    <button type="button" class="theme-button" data-theme="cyberpunk">Cyberpunk</button>
+                    <button type="button" class="theme-button" data-theme="neon">Neon</button>
+                    <button type="button" class="theme-button" data-theme="sunset">Sunset Glow</button>
+                </div>
+            </header>
+
+            <section class="upload-panel">
+                <div>
+                    <h2>Upload Portfolio Document</h2>
+                    <p class="panel-copy">
+                        Expected labels include Name, DOB, PRN, About, Skills, Certificates,
+                        Projects, Email, Phone, GitHub, and LinkedIn.
+                    </p>
+                </div>
+                <div class="upload-controls">
+                    <input type="file" id="fileInput" accept=".txt,.pdf">
+                    <button type="button" class="action-button" id="shareProfileButton">Generate Profile Link</button>
+                    <p id="statusMessage" class="status-message" aria-live="polite">
+                        No document uploaded yet.
+                    </p>
+                </div>
+            </section>
+
+            <div id="portfolioExport">
+                <section class="content-grid">
+                    <article class="info-card">
+                        <h2>Personal Details</h2>
+                        <p id="name">Name: -</p>
+                        <p id="prn">PRN: -</p>
+                        <p id="dob">DOB: -</p>
+                    </article>
+
+                    <article class="info-card accent-card">
+                        <h2>About Me</h2>
+                        <p id="about">
+                            Upload a document to extract and display the summary here.
+                        </p>
+                    </article>
+                </section>
+
+                <section class="showcase-grid">
+                    <article class="media-panel">
+                        <div class="panel-text">
+                            <h2>Certificates</h2>
+                            <ul id="certList"></ul>
+                        </div>
+                        <div class="panel-image certificate-image" aria-hidden="true"></div>
+                    </article>
+
+                    <article class="media-panel reverse">
+                        <div class="panel-image skills-image" aria-hidden="true"></div>
+                        <div class="panel-text">
+                            <h2>Skills</h2>
+                            <ul id="skillList"></ul>
+                        </div>
+                    </article>
+
+                    <article class="media-panel">
+                        <div class="panel-text">
+                            <h2>Projects</h2>
+                            <ul id="projectList"></ul>
+                        </div>
+                        <div class="panel-image project-image" aria-hidden="true"></div>
+                    </article>
+                </section>
+
+                <section class="contact-panel">
+                    <h2>Contact Details</h2>
+                    <div class="contact-grid">
+                        <p id="mail">Email: -</p>
+                        <p id="phone">Phone: -</p>
+                        <p id="linkedin">LinkedIn: -</p>
+                        <p id="github">GitHub: -</p>
+                    </div>
+                </section>
+            </div>
+
+            <section class="document-panel">
+                <div class="document-header">
+                    <h2>Extracted Text Preview</h2>
+                    <p>Useful for checking whether the uploaded document was parsed correctly.</p>
+                </div>
+                <pre id="documentPreview">Your extracted text will appear here.</pre>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
